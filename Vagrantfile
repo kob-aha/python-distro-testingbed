@@ -8,9 +8,9 @@ Vagrant.configure("2") do |config|
 	  
       d.build_dir = "."
       d.build_args = ["-t=python-distro"]
-      d.name = "python-disto"
+      d.name = "python-distro"
       d.remains_running = false
-      d.volumes = ["/vagrant/:/usr/local/distro-src"]	  
+      d.volumes = ["/vagrant:/usr/local/distro-src"]	  
     end
   end
 end

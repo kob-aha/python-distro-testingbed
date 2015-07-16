@@ -23,6 +23,8 @@ RUN useradd -d/home/docker -gdocker -m docker
 RUN echo 'docker:tcuser' | chpasswd
 #RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
+RUN pip install numpy==1.9.2
+
 ADD requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 

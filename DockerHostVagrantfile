@@ -10,10 +10,11 @@ Vagrant.configure("2") do |config|
  
   config.vm.define "dockerhost"
   config.vm.box = "hp-ess/boot2docker"
-  #config.vm.network "forwarded_port", guest: 33, host: 33
+  #config.vm.network "forwarded_port", guest: 33, host: 33  
  
   config.vm.provider :virtualbox do |vb|
       vb.name = "dockerhost"
+	  vb.memory = 2048
   end
  
 end
