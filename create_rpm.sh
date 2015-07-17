@@ -8,5 +8,6 @@ pushd /usr/local/python-distro-src/src &> /dev/null
 rm -f python_distro-*.rpm
 echo "Start creating RPM"
 rpmvenv python-distro.json
+yes | cp -f *.rpm /usr/local/python-distro/
 echo "Finished creating RPM"
 popd &> /dev/null
