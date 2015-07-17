@@ -26,10 +26,12 @@ RUN echo 'docker:tcuser' | chpasswd
 ADD requirements.txt /tmp/requirements.txt
 ADD distro-requirements.txt /tmp/distro-requirements.txt
 
-RUN pip install -r /tmp/requirements.txt
-RUN pip install -r /tmp/distro-requirements.txt
-
-# Install setuptools
-RUN wget https://bootstrap.pypa.io/ez_setup.py -O - | python -
+# Install a virtual environment with all the dependencies
+RUN pip install 'virtualenv==13.1.0'; \
+	virtualenv /usr/local/python-venv; \
+	source /usr/local/python-venv/bin/activate; \
+	pip install -r /tmp/requirements.txt; \
+	pip install -r /tmp/distro-requirements.txt; \
+	wget https://bootstrap.pypa.io/ez_setup.py -O - | python -
 
 ENTRYPOINT "/bin/bash"

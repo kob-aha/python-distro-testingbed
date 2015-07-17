@@ -1,16 +1,16 @@
-ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
- 
 Vagrant.configure("2") do |config|
-  config.vm.define "python-distro" do |a|
-    a.vm.provider "docker" do |d|
-	  d.vagrant_machine = "dockerhost"
-      d.vagrant_vagrantfile = "./DockerHostVagrantfile"
-	  
-      d.build_dir = "."
-      d.build_args = ["-t=python-distro"]
-      d.name = "python-distro"
-      d.remains_running = false
-      d.volumes = ["/vagrant:/usr/local/distro-src"]	  
-    end
+
+  config.vm.define "python-distro"
+  config.vm.box = "hp-ess/boot2docker"  
+  
+  config.vm.provider :virtualbox do |vb|
+      #vb.name = "dockerhost"
+	  vb.name = "python-distro"
+	  vb.memory = 2048
   end
+  
+  config.vm.provision "docker", run: "always" do |d|
+    d.build_image "/vagrant", args: "-t=python-distro"	
+  end
+    
 end
