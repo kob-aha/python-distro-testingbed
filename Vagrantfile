@@ -1,7 +1,7 @@
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
  
 Vagrant.configure("2") do |config|
-  config.vm.define "pycharm-test" do |a|
+  config.vm.define "python-distro" do |a|
     a.vm.provider "docker" do |d|
 	  d.vagrant_machine = "dockerhost"
       d.vagrant_vagrantfile = "./DockerHostVagrantfile"

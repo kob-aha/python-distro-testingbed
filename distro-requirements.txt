@@ -1,0 +1,2 @@
+pex==1.0.1
+virtualenv==13.1.0
