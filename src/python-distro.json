@@ -1,0 +1,33 @@
+{
+    "extensions": {
+        "enabled": [
+            "python_venv",
+            "blocks"
+        ]
+    },
+    "core": {
+        
+        "name": "python_distro",
+        
+        "version": "0.0.1",
+        
+        "release": "1",
+        
+        "summary": "python dist example",                 
+        
+        "license": "MIT",
+                        
+        "buildroot": "%(mktemp -ud %{_tmppath}/%{SOURCE0}-%{version}-%{release}-XXXXXX)"
+    },
+    "python_venv": {                                
+        "name": "python-venv",                
+        "path": "usr/local/python-venv",
+        "python": "python2.7",        
+        "requirements": ["requirements.txt"]        
+    },
+    "blocks": {
+        "desc": [
+            "This is a sample application to test python packaging abilities"
+        ]
+    }
+}
