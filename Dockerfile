@@ -25,6 +25,7 @@ RUN echo 'docker:tcuser' | chpasswd
 
 ADD requirements.txt /tmp/requirements.txt
 ADD distro-requirements.txt /tmp/distro-requirements.txt
+ADD https://github.com/kevinconway/rpmvenv/archive/master.zip /tmp/rpmenv.zip
 
 # Install a virtual environment with all the dependencies
 RUN pip install 'virtualenv==13.1.0'; \
@@ -32,6 +33,8 @@ RUN pip install 'virtualenv==13.1.0'; \
 	source /usr/local/python-venv/bin/activate; \
 	pip install -r /tmp/requirements.txt; \
 	pip install -r /tmp/distro-requirements.txt; \
-	wget https://bootstrap.pypa.io/ez_setup.py -O - | python -
+    mkdir /tmp/rpmenv; \
+    unzip /tmp/rpmenv.zip -d /tmp/rpmenv; \
+    wget https://bootstrap.pypa.io/ez_setup.py -O - | python -
 
 ENTRYPOINT "/bin/bash"

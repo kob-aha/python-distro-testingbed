@@ -1,0 +1,50 @@
+{
+    "core": {
+        // The name of the RPM file which is generated.
+        "name": "python-dist",
+        // The RPM version to build.
+        "version": "0.0.1",
+        // The release number for the RPM. Default is 1.
+        "release": "1",
+        // The short package summary.
+        "summary": "python dist example",
+        
+        // The RPM package group in which this package belongs.
+        //"group": "Application/System",
+        
+        // The license under which the package is distributed.
+        //"license": "MIT",
+        
+        // The URL of the package source.
+        //"url": "https://projectsite.com",
+        
+        // The path to the package source. Defaults to the parent of the config.
+        //"source": "/path/to/my/source",
+        
+        // The name of the buildroot directory to use. Default is random temp dir.
+        "buildroot": "%(mktemp -ud %{_tmppath}/%{SOURCE0}-%{version}-%{release}-XXXXXX)"
+    },
+    
+    "python_venv": {
+        // The executable to use for creating a venv.
+        "cmd": "virtualenv",
+        
+        // Flags to pass to the venv during creation.
+        //"flags": ["--always-copy"],
+        
+        // The name of the installed venv.
+        "name": "python-dist-venv",
+        
+        // The path in which to install the venv.
+        "path": "/usr/local/python-venv",
+        
+        // The python executable to use in the venv.
+        //"python": "python2.7",
+        
+        // Names of requirements files to install in the venv.
+        "requirements": ["/usr/local/python-distro/requirements.txt"]
+        
+        // Flags to pass to pip during pip install calls.
+        //"pip_flags": "--index-url https://internal-pypi-server.org"
+    }
+}
